@@ -14,6 +14,7 @@ std_funcs += built_in_methods
 std_modules = read_lines('python_std/py_std_lib.txt')
 
 
+# def get_func_call(line, imported_module_names):
 def get_func_call(line):
     # Given a line of code, pull out a function call.
     # eg. "get_func_call('foo')"
@@ -34,6 +35,8 @@ def get_func_call(line):
             if(called_on in std_funcs or called_on in std_modules or
                word in std_funcs):
                 continue
+            # if called_on not in imported_module_names:
+            #     continue
         if word in ('if', 'for') or ':' in word:
             continue
         if word.startswith('test_'):
@@ -44,12 +47,14 @@ def get_func_call(line):
 
 
 if __name__ == '__main__':
-    with open(__file__) as f:
+    with open('l1_file_to_dot.py') as f:
         text = f.read()
     func_names = []
+    imported_module_names = set(['l0_get_func_call'])
     for line in text.splitlines():
+        # func_name = get_func_call(line, imported_module_names)
         func_name = get_func_call(line)
         if(func_name):
             func_names.append(func_name)
-        print '{:<10} | {:<100}'.format(func_name[:10] if func_name else func_name, line)
+        print '{:<20} | {:<100}'.format(func_name[:20] if func_name else func_name, line)
     print func_names

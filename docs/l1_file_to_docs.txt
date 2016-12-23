@@ -1,0 +1,6 @@
+
+find root of callgraph
+  print_node(root)
+    print root.line
+    for each child:
+      print_node(child)

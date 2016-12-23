@@ -1,0 +1,21 @@
+
+root_node = file_to_nodes(__file__)
+  text_root = curr_parent = TextNode('<top-level>', '')
+  for line in text.splitlines():
+    curr_parent = line_to_node(curr_parent, line)
+      text_node = TextNode(line, module_name)
+        regex func_name from line
+        self.func_call = l0_get_func_call.get_func_call(line)
+          for each word in line:
+            return word if it's a function call
+
+node_to_dot(root_node)
+  each_node(root_node, [print_tree, add_to_graph], 0)
+    call the passed functions on each node in the tree
+    print_tree
+      root.proper_func_name()[:30] if root.func_name else '',
+      root.proper_func_call()[:30] if root.func_call else '',
+    add_to_graph
+      call_graph[node.parent.proper_func_name()].append(node.proper_func_call())
+
+
